@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BbmDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Houseno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Roadno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubDistrict" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="District" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Zip" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BloodData">
+    <Key>
+      <PropertyRef Name="BId" />
+    </Key>
+    <Property Name="BId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AvailableQuantity" Type="int" Nullable="false" />
+    <Property Name="TotalCapacity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BloodInventory">
+    <Key>
+      <PropertyRef Name="BInventory_Id" />
+    </Key>
+    <Property Name="BInventory_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BI_UserId" Type="int" Nullable="false" />
+    <Property Name="Blood_Group" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BI_Quantity" Type="int" Nullable="false" />
+    <Property Name="BI_Bag_Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BI_Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="HId" />
+    </Key>
+    <Property Name="HId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RequestType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BloodGroup" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="History_Bag_Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="History_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UId" />
+    </Key>
+    <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="BloodId" Type="int" Nullable="false" />
+    <Property Name="UserRole" Type="int" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_BloodInventory_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BloodInventory" Type="Self.BloodInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="BloodInventory">
+        <PropertyRef Name="BI_UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_BloodData">
+    <End Role="BloodData" Type="Self.BloodData" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodData">
+        <PropertyRef Name="BId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="BloodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BbmDBModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BloodData" EntityType="Self.BloodData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BloodInventory" EntityType="Self.BloodInventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BloodInventory_User" Association="Self.FK_BloodInventory_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BloodInventory" EntitySet="BloodInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Address" Association="Self.FK_User_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_BloodData" Association="Self.FK_User_BloodData">
+      <End Role="BloodData" EntitySet="BloodData" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BbmDBModelStoreContainer" CdmEntityContainer="BbmDBEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="BbmDBModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AId" ColumnName="AId" />
+          <ScalarProperty Name="Houseno" ColumnName="Houseno" />
+          <ScalarProperty Name="Roadno" ColumnName="Roadno" />
+          <ScalarProperty Name="SubDistrict" ColumnName="SubDistrict" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodDatas">
+      <EntityTypeMapping TypeName="BbmDBModel.BloodData">
+        <MappingFragment StoreEntitySet="BloodData">
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AvailableQuantity" ColumnName="AvailableQuantity" />
+          <ScalarProperty Name="TotalCapacity" ColumnName="TotalCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodInventories">
+      <EntityTypeMapping TypeName="BbmDBModel.BloodInventory">
+        <MappingFragment StoreEntitySet="BloodInventory">
+          <ScalarProperty Name="BInventory_Id" ColumnName="BInventory_Id" />
+          <ScalarProperty Name="BI_UserId" ColumnName="BI_UserId" />
+          <ScalarProperty Name="Blood_Group" ColumnName="Blood_Group" />
+          <ScalarProperty Name="BI_Quantity" ColumnName="BI_Quantity" />
+          <ScalarProperty Name="BI_Bag_Code" ColumnName="BI_Bag_Code" />
+          <ScalarProperty Name="BI_Date" ColumnName="BI_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="BbmDBModel.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="HId" ColumnName="HId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="History_Bag_Code" ColumnName="History_Bag_Code" />
+          <ScalarProperty Name="History_date" ColumnName="History_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BbmDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="BloodId" ColumnName="BloodId" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BbmDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Houseno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Roadno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubDistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Zip" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Address" FromRole="Address" ToRole="User" />
+  </EntityType>
+  <EntityType Name="BloodData">
+    <Key>
+      <PropertyRef Name="BId" />
+    </Key>
+    <Property Name="BId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AvailableQuantity" Type="Int32" Nullable="false" />
+    <Property Name="TotalCapacity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_BloodData" FromRole="BloodData" ToRole="User" />
+  </EntityType>
+  <EntityType Name="BloodInventory">
+    <Key>
+      <PropertyRef Name="BInventory_Id" />
+    </Key>
+    <Property Name="BInventory_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BI_UserId" Type="Int32" Nullable="false" />
+    <Property Name="Blood_Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BI_Quantity" Type="Int32" Nullable="false" />
+    <Property Name="BI_Bag_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BI_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_BloodInventory_User" FromRole="BloodInventory" ToRole="User" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="HId" />
+    </Key>
+    <Property Name="HId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="History_Bag_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="History_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UId" />
+    </Key>
+    <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressId" Type="Int32" Nullable="false" />
+    <Property Name="BloodId" Type="Int32" Nullable="false" />
+    <Property Name="UserRole" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_User_Address" FromRole="User" ToRole="Address" />
+    <NavigationProperty Name="BloodData" Relationship="Self.FK_User_BloodData" FromRole="User" ToRole="BloodData" />
+    <NavigationProperty Name="BloodInventories" Relationship="Self.FK_BloodInventory_User" FromRole="User" ToRole="BloodInventory" />
+  </EntityType>
+  <Association Name="FK_User_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_BloodData">
+    <End Role="BloodData" Type="Self.BloodData" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodData">
+        <PropertyRef Name="BId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="BloodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BloodInventory_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BloodInventory" Type="Self.BloodInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="BloodInventory">
+        <PropertyRef Name="BI_UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BbmDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="BloodDatas" EntityType="Self.BloodData" />
+    <EntitySet Name="BloodInventories" EntityType="Self.BloodInventory" />
+    <EntitySet Name="Histories" EntityType="Self.History" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_User_Address" Association="Self.FK_User_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_BloodData" Association="Self.FK_User_BloodData">
+      <End Role="BloodData" EntitySet="BloodDatas" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BloodInventory_User" Association="Self.FK_BloodInventory_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="BloodInventory" EntitySet="BloodInventories" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
