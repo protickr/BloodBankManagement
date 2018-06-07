@@ -1,0 +1,18 @@
+F:\Project\BloodBankManagement\BBM.BLL\bin\Debug\BBM.BLL.dll
+F:\Project\BloodBankManagement\BBM.BLL\bin\Debug\BBM.BLL.pdb
+F:\Project\BloodBankManagement\BBM.BLL\obj\Debug\BBM.BLL.csprojResolveAssemblyReference.cache
+F:\Project\BloodBankManagement\BBM.BLL\obj\Debug\BBM.BLL.dll
+F:\Project\BloodBankManagement\BBM.BLL\obj\Debug\BBM.BLL.pdb
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\BBM.BLL.dll
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\BBM.BLL.pdb
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\obj\Debug\BBM.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\obj\Debug\BBM.BLL.dll
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\obj\Debug\BBM.BLL.pdb
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\BBM.DAL.dll
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\BBM.Entity.dll
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\BBM.DAL.pdb
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\BBM.Entity.pdb
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Protick\Documents\Visual Studio 2015\Projects\BloodBankManagement\BBM.BLL\bin\Debug\EntityFramework.SqlServer.xml
